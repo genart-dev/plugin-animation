@@ -4,6 +4,16 @@ Keyframe animation and export plugin for [genart.dev](https://genart.dev) — an
 
 Part of [genart.dev](https://genart.dev) — a generative art platform with an MCP server, desktop app, and IDE extensions.
 
+## Examples
+
+![Easing curves](images/easing-curves.png)
+
+All 12 supported easing types — including custom cubic-bezier curves — plotted from t=0 to t=1.
+
+![Color interpolation](images/color-interpolation.png)
+
+Oklab color space interpolation produces perceptually uniform transitions between any two colors.
+
 ## Install
 
 ```bash
