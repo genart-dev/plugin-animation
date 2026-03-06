@@ -1,0 +1,148 @@
+{
+  "genart": "1.2",
+  "id": "color-interpolation",
+  "title": "Color Interpolation (Oklab)",
+  "created": "2026-03-06T00:00:00Z",
+  "modified": "2026-03-06T00:00:00Z",
+  "renderer": {
+    "type": "canvas2d"
+  },
+  "canvas": {
+    "width": 700,
+    "height": 200
+  },
+  "parameters": [],
+  "colors": [],
+  "state": {
+    "seed": 1,
+    "params": {},
+    "colorPalette": []
+  },
+  "algorithm": "function sketch(ctx){var W=700,H=200,stripH=32,gap=8,margin=20,stripW=660;ctx.fillStyle=\"#1a1a2e\";ctx.fillRect(0,0,W,H);var D=[[\"#ff0000\",\"#fd0c10\",\"#fa141a\",\"#f81b22\",\"#f62028\",\"#f3242e\",\"#f12732\",\"#ef2b37\",\"#ed2e3b\",\"#ea303f\",\"#e83343\",\"#e63546\",\"#e3374a\",\"#e1394d\",\"#df3b50\",\"#dc3d53\",\"#da3e56\",\"#d84059\",\"#d5415c\",\"#d3435e\",\"#d14461\",\"#cf4564\",\"#cc4666\",\"#ca4769\",\"#c8486b\",\"#c5496e\",\"#c34a70\",\"#c14b72\",\"#be4c75\",\"#bc4d77\",\"#ba4d79\",\"#b74e7c\",\"#b54e7e\",\"#b34f80\",\"#b05082\",\"#ae5084\",\"#ac5187\",\"#aa5189\",\"#a7518b\",\"#a5528d\",\"#a3528f\",\"#a05291\",\"#9e5293\",\"#9c5395\",\"#995397\",\"#975399\",\"#95539b\",\"#92539d\",\"#90539f\",\"#8e53a1\",\"#8b53a3\",\"#8953a5\",\"#8653a7\",\"#8453a9\",\"#8253ab\",\"#7f52ad\",\"#7d52af\",\"#7b52b1\",\"#7851b3\",\"#7651b5\",\"#7451b7\",\"#7150b9\",\"#6f50bb\",\"#6c4fbc\",\"#6a4fbe\",\"#674ec0\",\"#654ec2\",\"#634dc4\",\"#604cc6\",\"#5e4cc8\",\"#5b4bca\",\"#594acc\",\"#5649cd\",\"#5448cf\",\"#5147d1\",\"#4f46d3\",\"#4c45d5\",\"#4a44d7\",\"#4743d9\",\"#4542da\",\"#4240dc\",\"#3f3fde\",\"#3d3ee0\",\"#3a3ce2\",\"#373ae4\",\"#3439e5\",\"#3237e7\",\"#2f35e9\",\"#2c33eb\",\"#2930ed\",\"#262eef\",\"#232bf0\",\"#1f29f2\",\"#1c25f4\",\"#1822f6\",\"#141ef8\",\"#1019fa\",\"#0b13fb\",\"#050bfd\",\"#0000ff\"],[\"#ff6b6b\",\"#fe6d6c\",\"#fd6e6d\",\"#fc706e\",\"#fb716f\",\"#fa7270\",\"#f97471\",\"#f87572\",\"#f77773\",\"#f57874\",\"#f47975\",\"#f37b76\",\"#f27c76\",\"#f17d77\",\"#f07f78\",\"#ef8079\",\"#ee817a\",\"#ed827b\",\"#eb847c\",\"#ea857d\",\"#e9867e\",\"#e8877f\",\"#e78880\",\"#e68981\",\"#e48b82\",\"#e38c82\",\"#e28d83\",\"#e18e84\",\"#df8f85\",\"#de9086\",\"#dd9187\",\"#dc9288\",\"#da9389\",\"#d9948a\",\"#d8958b\",\"#d7978c\",\"#d5988c\",\"#d4998d\",\"#d39a8e\",\"#d19b8f\",\"#d09c90\",\"#cf9d91\",\"#cd9e92\",\"#cc9f93\",\"#ca9f94\",\"#c9a095\",\"#c7a195\",\"#c6a296\",\"#c5a397\",\"#c3a498\",\"#c2a599\",\"#c0a69a\",\"#bfa79b\",\"#bda89c\",\"#bba99d\",\"#baaa9d\",\"#b8ab9e\",\"#b7ac9f\",\"#b5aca0\",\"#b3ada1\",\"#b2aea2\",\"#b0afa3\",\"#aeb0a4\",\"#adb1a5\",\"#abb2a5\",\"#a9b2a6\",\"#a7b3a7\",\"#a5b4a8\",\"#a3b5a9\",\"#a2b6aa\",\"#a0b7ab\",\"#9eb7ac\",\"#9cb8ac\",\"#9ab9ad\",\"#98baae\",\"#96bbaf\",\"#93bcb0\",\"#91bcb1\",\"#8fbdb2\",\"#8dbeb3\",\"#8abfb3\",\"#88bfb4\",\"#86c0b5\",\"#83c1b6\",\"#81c2b7\",\"#7ec3b8\",\"#7bc3b9\",\"#79c4ba\",\"#76c5ba\",\"#73c6bb\",\"#70c6bc\",\"#6dc7bd\",\"#69c8be\",\"#66c9bf\",\"#63c9c0\",\"#5fcac1\",\"#5bcbc1\",\"#57ccc2\",\"#53ccc3\",\"#4ecdc4\"],[\"#000000\",\"#000000\",\"#000000\",\"#000000\",\"#000000\",\"#000000\",\"#010101\",\"#010101\",\"#020202\",\"#020202\",\"#030303\",\"#050505\",\"#060606\",\"#070707\",\"#090909\",\"#0b0b0b\",\"#0e0e0e\",\"#101010\",\"#121212\",\"#141414\",\"#161616\",\"#191919\",\"#1b1b1b\",\"#1d1d1d\",\"#202020\",\"#222222\",\"#252525\",\"#272727\",\"#292929\",\"#2c2c2c\",\"#2e2e2e\",\"#313131\",\"#343434\",\"#363636\",\"#393939\",\"#3b3b3b\",\"#3e3e3e\",\"#414141\",\"#434343\",\"#464646\",\"#494949\",\"#4b4b4b\",\"#4e4e4e\",\"#515151\",\"#545454\",\"#565656\",\"#595959\",\"#5c5c5c\",\"#5f5f5f\",\"#626262\",\"#656565\",\"#676767\",\"#6a6a6a\",\"#6d6d6d\",\"#707070\",\"#737373\",\"#767676\",\"#797979\",\"#7c7c7c\",\"#7f7f7f\",\"#828282\",\"#858585\",\"#888888\",\"#8b8b8b\",\"#8e8e8e\",\"#919191\",\"#949494\",\"#979797\",\"#9a9a9a\",\"#9d9d9d\",\"#a0a0a0\",\"#a4a4a4\",\"#a7a7a7\",\"#aaaaaa\",\"#adadad\",\"#b0b0b0\",\"#b3b3b3\",\"#b6b6b6\",\"#bababa\",\"#bdbdbd\",\"#c0c0c0\",\"#c3c3c3\",\"#c7c7c7\",\"#cacaca\",\"#cdcdcd\",\"#d0d0d0\",\"#d4d4d4\",\"#d7d7d7\",\"#dadada\",\"#dddddd\",\"#e1e1e1\",\"#e4e4e4\",\"#e7e7e7\",\"#ebebeb\",\"#eeeeee\",\"#f1f1f1\",\"#f5f5f5\",\"#f8f8f8\",\"#fcfcfc\",\"#ffffff\"],[\"#ffd93d\",\"#fdd741\",\"#fcd645\",\"#fad448\",\"#f8d24b\",\"#f7d14e\",\"#f5cf51\",\"#f3cd54\",\"#f1cb56\",\"#f0ca59\",\"#eec85b\",\"#ecc65d\",\"#ebc55f\",\"#e9c361\",\"#e7c163\",\"#e6c065\",\"#e4be67\",\"#e2bc69\",\"#e1bb6a\",\"#dfb96c\",\"#ddb76e\",\"#dcb66f\",\"#dab471\",\"#d9b272\",\"#d7b173\",\"#d5af75\",\"#d4ad76\",\"#d2ab77\",\"#d0aa79\",\"#cfa87a\",\"#cda67b\",\"#cca57c\",\"#caa37d\",\"#c8a17e\",\"#c7a07f\",\"#c59e80\",\"#c49c81\",\"#c29b82\",\"#c19983\",\"#bf9784\",\"#bd9685\",\"#bc9486\",\"#ba9287\",\"#b99088\",\"#b78f88\",\"#b68d89\",\"#b48b8a\",\"#b38a8b\",\"#b1888b\",\"#b0868c\",\"#ae848d\",\"#ad838d\",\"#ab818e\",\"#a97f8f\",\"#a87d8f\",\"#a67c90\",\"#a57a91\",\"#a47891\",\"#a27692\",\"#a17592\",\"#9f7393\",\"#9e7193\",\"#9c6f94\",\"#9b6e94\",\"#996c95\",\"#986a95\",\"#966896\",\"#956696\",\"#946596\",\"#926397\",\"#916197\",\"#8f5f98\",\"#8e5d98\",\"#8d5b98\",\"#8b5999\",\"#8a5799\",\"#885699\",\"#87549a\",\"#86529a\",\"#84509a\",\"#834e9a\",\"#824c9b\",\"#804a9b\",\"#7f479b\",\"#7e459b\",\"#7c439c\",\"#7b419c\",\"#7a3f9c\",\"#793c9c\",\"#773a9d\",\"#76389d\",\"#75359d\",\"#73339d\",\"#72309d\",\"#712d9d\",\"#702a9e\",\"#6f279e\",\"#6d249e\",\"#6c219e\",\"#6b1d9e\"]];for(var row=0;row<4;row++){var y=margin+row*(stripH+gap+16);for(var px=0;px<100;px++){ctx.fillStyle=D[row][px];var x1=margin+Math.floor(px*stripW/100);var x2=margin+Math.floor((px+1)*stripW/100);ctx.fillRect(x1,y+14,x2-x1,stripH);}ctx.strokeStyle=\"#333\";ctx.lineWidth=1;ctx.strokeRect(margin,y+14,stripW,stripH);}return{};}",
+  "layers": [
+    {
+      "id": "label-0",
+      "type": "typography:text",
+      "name": "Label: Red → Blue",
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "blendMode": "normal",
+      "transform": {
+        "x": 20,
+        "y": 20,
+        "width": 660,
+        "height": 14,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "properties": {
+        "text": "Red → Blue",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "color": "#b0b0b0",
+        "align": "left",
+        "baseline": "top",
+        "lineHeight": 1.2
+      }
+    },
+    {
+      "id": "label-1",
+      "type": "typography:text",
+      "name": "Label: Coral → Teal",
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "blendMode": "normal",
+      "transform": {
+        "x": 20,
+        "y": 76,
+        "width": 660,
+        "height": 14,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "properties": {
+        "text": "Coral → Teal",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "color": "#b0b0b0",
+        "align": "left",
+        "baseline": "top",
+        "lineHeight": 1.2
+      }
+    },
+    {
+      "id": "label-2",
+      "type": "typography:text",
+      "name": "Label: Black → White",
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "blendMode": "normal",
+      "transform": {
+        "x": 20,
+        "y": 132,
+        "width": 660,
+        "height": 14,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "properties": {
+        "text": "Black → White",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "color": "#b0b0b0",
+        "align": "left",
+        "baseline": "top",
+        "lineHeight": 1.2
+      }
+    },
+    {
+      "id": "label-3",
+      "type": "typography:text",
+      "name": "Label: Gold → Purple",
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "blendMode": "normal",
+      "transform": {
+        "x": 20,
+        "y": 188,
+        "width": 660,
+        "height": 14,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "anchorX": 0,
+        "anchorY": 0
+      },
+      "properties": {
+        "text": "Gold → Purple",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "color": "#b0b0b0",
+        "align": "left",
+        "baseline": "top",
+        "lineHeight": 1.2
+      }
+    }
+  ]
+}

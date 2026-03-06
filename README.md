@@ -6,13 +6,15 @@ Part of [genart.dev](https://genart.dev) — a generative art platform with an M
 
 ## Examples
 
-![Easing curves](images/easing-curves.png)
+![Easing curves](test-renders/easing-curves.png)
 
 All 12 supported easing types — including custom cubic-bezier curves — plotted from t=0 to t=1.
 
-![Color interpolation](images/color-interpolation.png)
+![Color interpolation](test-renders/color-interpolation.png)
 
 Oklab color space interpolation produces perceptually uniform transitions between any two colors.
+
+Source files: [easing-curves.genart](test-renders/easing-curves.genart) · [color-interpolation.genart](test-renders/color-interpolation.genart)
 
 ## Install
 
