@@ -10,6 +10,18 @@ const TIMELINE_PROPERTIES: LayerPropertySchema[] = [
   { key: "duration", label: "Duration (sec)", type: "number", default: 3.0, min: 0.1, max: 300, step: 0.1, group: "timeline" },
   { key: "fps", label: "FPS", type: "number", default: 30, min: 1, max: 60, step: 1, group: "timeline" },
   { key: "loop", label: "Loop", type: "boolean", default: true, group: "timeline" },
+  {
+    key: "loopMode",
+    label: "Loop Mode",
+    type: "select",
+    default: "repeat",
+    options: [
+      { value: "repeat", label: "Repeat (restart)" },
+      { value: "ping-pong", label: "Ping Pong (reverse)" },
+      { value: "once", label: "Once (stop)" },
+    ],
+    group: "timeline",
+  },
 ];
 
 export const timelineLayerType: LayerTypeDefinition = {
@@ -21,7 +33,7 @@ export const timelineLayerType: LayerTypeDefinition = {
   propertyEditorId: "animation:timeline-editor",
 
   createDefault(): LayerProperties {
-    return { duration: 3.0, fps: 30, loop: true };
+    return { duration: 3.0, fps: 30, loop: true, loopMode: "repeat" };
   },
 
   /** Timeline layer has no visual output — it's a settings anchor. */

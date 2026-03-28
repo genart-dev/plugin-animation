@@ -1,15 +1,16 @@
 import type { DesignPlugin, PluginContext } from "@genart-dev/core";
 import { timelineLayerType } from "./timeline-layer.js";
+import { motionPathLayerType } from "./motion-path-layer.js";
 import { animationMcpTools } from "./animation-tools.js";
 
 const animationPlugin: DesignPlugin = {
   id: "animation",
   name: "Animation",
-  version: "0.1.0",
+  version: "0.2.0",
   tier: "free",
-  description: "Keyframe animation and export for design layers.",
+  description: "Keyframe animation, motion paths, loop modes, and export for design layers.",
 
-  layerTypes: [timelineLayerType],
+  layerTypes: [timelineLayerType, motionPathLayerType],
   tools: [],
   exportHandlers: [],
   mcpTools: animationMcpTools,
@@ -20,7 +21,8 @@ const animationPlugin: DesignPlugin = {
 
 export default animationPlugin;
 export { timelineLayerType } from "./timeline-layer.js";
+export { motionPathLayerType, sampleMotionPath } from "./motion-path-layer.js";
 export { animationMcpTools } from "./animation-tools.js";
 export { interpolateProperty, resolveLayerProperties } from "./interpolate.js";
 export { applyKeyframeEasing } from "./easing.js";
-export type { Keyframe, KeyframeEasing, KeyframeMap, AnimationSettings, LayerPropertyValue } from "./types.js";
+export type { Keyframe, KeyframeEasing, KeyframeMap, AnimationSettings, LayerPropertyValue, LoopMode, MotionPathPoint } from "./types.js";

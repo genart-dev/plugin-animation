@@ -303,6 +303,56 @@ export const exportFramesTool: McpToolDefinition = {
   },
 };
 
+export const createMotionPathTool: McpToolDefinition = {
+  name: "create_motion_path",
+  description: "Create a motion path guide layer that animates a target layer along a series of points.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      targetLayerId: { type: "string", description: "ID of the layer to animate along the path." },
+      points: {
+        type: "array",
+        items: { type: "object", properties: { x: { type: "number" }, y: { type: "number" } }, required: ["x", "y"] },
+        description: "Path waypoints [{x, y}]. At least 2 required.",
+      },
+      alignRotation: { type: "boolean", description: "Auto-rotate layer to follow path direction (default: true)." },
+      easing: { type: "string", enum: ["linear", "ease-in", "ease-out", "ease-in-out"], description: 'Path easing (default: "linear").' },
+      showPath: { type: "boolean", description: "Show path guide line (default: true)." },
+      pathColor: { type: "string", description: 'Guide color hex (default: "#0088ff").' },
+      layerName: { type: "string" },
+    },
+    required: ["points"],
+  } satisfies JsonSchema,
+
+  async handler(input: Record<string, unknown>, context: McpToolContext): Promise<McpToolResult> {
+    const points = input.points as Array<{ x: number; y: number }>;
+    if (!points || points.length < 2) return errorResult("At least 2 path points required.");
+
+    const layerId = `motion-path-${Date.now().toString(36)}`;
+    const layer: DesignLayer = {
+      id: layerId,
+      type: "animation:motion-path",
+      name: (input.layerName as string) ?? "Motion Path",
+      visible: true,
+      locked: false,
+      opacity: 1,
+      blendMode: "normal" as BlendMode,
+      transform: { x: 0, y: 0, width: context.canvasWidth, height: context.canvasHeight, rotation: 0, scaleX: 1, scaleY: 1, anchorX: 0, anchorY: 0 },
+      properties: {
+        path: JSON.stringify(points),
+        targetLayerId: (input.targetLayerId as string) ?? "",
+        alignRotation: (input.alignRotation as boolean) ?? true,
+        easing: (input.easing as string) ?? "linear",
+        showPath: (input.showPath as boolean) ?? true,
+        pathColor: (input.pathColor as string) ?? "#0088ff",
+      },
+    };
+    context.layers.add(layer);
+    context.emitChange("layer-added");
+    return textResult(`Added motion path '${layerId}' with ${points.length} waypoints.`);
+  },
+};
+
 export const animationMcpTools: McpToolDefinition[] = [
   createTimelineTool,
   setKeyframeTool,
@@ -312,4 +362,5 @@ export const animationMcpTools: McpToolDefinition[] = [
   previewAtTool,
   exportGifTool,
   exportFramesTool,
+  createMotionPathTool,
 ];

@@ -27,8 +27,8 @@ describe("animationPlugin", () => {
   it("exports a valid DesignPlugin", () => {
     expect(animationPlugin.id).toBe("animation");
     expect(animationPlugin.tier).toBe("free");
-    expect(animationPlugin.layerTypes).toHaveLength(1);
-    expect(animationPlugin.mcpTools).toHaveLength(8);
+    expect(animationPlugin.layerTypes).toHaveLength(2);
+    expect(animationPlugin.mcpTools).toHaveLength(9);
   });
 });
 
